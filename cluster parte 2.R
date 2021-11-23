@@ -18,6 +18,7 @@ packages(gridExtra)
 packages(GGally)
 packages(cluster) # clustering algorithms 
 packages(factoextra) # clustering algorithms & visualization
+library(readxl)
 base <- read_excel("dados.xlsx")
 dados <- subset(base, select = c(Bolsonaro2018, Neves14, Ciro2018, pop, Lula2006,Hobus18))
 dados$Bolsonaro2018 <- dados$Bolsonaro2018*100
@@ -126,3 +127,4 @@ dadosNorm %>%
   mutate(Cluster = final$cluster) %>%
   group_by(Cluster) %>%
   summarize_all('median')
+

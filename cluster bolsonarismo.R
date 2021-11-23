@@ -61,7 +61,7 @@ groups <- cutree(H.fit, k=2) # cut tree into 5 clusters
 # draw dendogram with red borders around the 5 clusters
 rect.hclust(H.fit, k=2, border="red")
 
-table(dados[,1],groups)
+table(dados[2,3],groups)
 
 
 # técnica 2 
@@ -131,12 +131,9 @@ clusplot(dados.stand, k.means.fit$cluster, main='2D representation of the Cluste
 d <- dist(dados.stand, method = "euclidean") # Euclidean distance matrix.
 H.fit <- hclust(d, method="ward")
 
-plot(H.fit) # display dendogram
-groups <- cutree(H.fit, k=2) # cut tree into 5 clusters
-# draw dendogram with red borders around the 5 clusters
-rect.hclust(H.fit, k=2, border="red")
-
-table(dados[,1],groups)
+plot(H.fit, labels = dados$CIDADE, hang = -0.9, cex = 0.7, main = "", sub = NULL,
+     xlab = "CIDADE")
+rect.hclust(H.fit, k=2, border="blue")
 
 
 # técnica 2 
@@ -252,3 +249,4 @@ plot(dados$Bolsonaro2018, dados$Lula2006, type="n", xlim=c(-3,2),
 text(x=dados$Bolsonaro2018, y=dados$Lula2006, labels=dados$CIDADE,col=grpAntiPt$cluster+1)
 # OPA utilizada
 #COM 3 não
+
